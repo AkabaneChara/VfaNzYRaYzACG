@@ -1,5 +1,5 @@
 parameters = {
-    "community-link": "http://aminoapps.com/c/BTS8382040" 
+    "community-link": "http://aminoapps.com/c/AnimeShinee" 
 }
 
 import os
@@ -24,6 +24,8 @@ finally:
 os.system("clear")
 print(f"{os.getcwd()}\n")
 session = requests.Session()
+
+Ro="\033[1;91m"; Ve="\033[1;92m"; Am="\033[1;93m"; Mo="\033[1;95m"; Cy='\033[1;96m'; Az="\033[1;94m"; Ne="\033[1;90m"; Bl="\033[1;97m"
 
 class Client:
     def __init__(self):
@@ -86,15 +88,17 @@ class App:
     def tzc(self): return tzFilter()
     def generation(self, email: str, password: str):
         try:           
-            print(f"\n[\033[1;31mcoins-generator\033[0m][\033[1;34mlogin\033[0m][{email}]: {self.client.login(email = email, password = password)['api:message']}.")          
-            print(f"[\033[1;31mcoins-generator\033[0m][\033[1;36mjoin-community\033[0m]: {self.client.join_community(comId = self.comId, inviteId = self.invitationId)['api:message']}.")
-            print(f"[\033[1;31mcoins-generator\033[0m][\033[1;32mlottery\033[0m]: {self.client.lottery(comId = self.comId, time_zone = tzFilter())['api:message']}")
-            print(f"[\033[1;31mcoins-generator\033[0m][\033[1;33mwatch-ad\033[0m]: {self.client.watch_ad()['api:message']}.")
+            print(f'{Ve}[Start]{Bl}: {email}')
+            print(f"{Cy}[Log_In]{Bl}: {self.client.login(email = email, password = password)['api:message']}.")              
+            print(f'{Cy}[Check_In]{Bl}: {self.client.check_in(comId=self.comId,timezone=self.client.time)["api:message"]}')
+            print(f"{Cy}[Lottery]{Bl}: {self.client.lottery(comId = self.comId, time_zone = tzFilter())['api:message']}")
+            print(f"{Az}[Watch_Ad]{Bl}: {self.client.watch_ad()['api:message']}.")
             for i2 in range(24):
                 time.sleep(12)
-                print(f"[\033[1;31mcoins-generator\033[0m][\033[1;35mmain-proccess\033[0m][{email}]: {self.client.send_active_object(comId = self.comId, timers = [{'start': int(time.time()), 'end': int(time.time()) + 300} for _ in range(50)], tz = tzFilter())['api:message']}.")
-            print(f"[\033[1;31mcoins-generator\033[0m][\033[1;25;32mend\033[0m][{email}]: Finished.")
-        except Exception as error: print(f"[\033[1;31mC01?-G3?3R4?0R\033[0m]][\033[1;31merror\033[0m]]: {error}")
+                print(f"{Az}[Main_Proccess]{Bl}: {self.client.send_active_object(comId = self.comId, timers = [{'start': int(time.time()), 'end': int(time.time()) + 300} for _ in range(50)], tz = tzFilter())['api:message']}.")
+            print(f"{Mo}[Finished]{Bl}: {email}\n")
+        except Exception as error: 
+            print(f"{Ro}[Error]{Bl}: {error}\n")
 
     def run(self):
         print("COIN GENERATOR ")
